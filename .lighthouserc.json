@@ -1,12 +1,14 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./public",
+      "settings": {
+        "chromeFlags": "--disable-gpu --no-sandbox"
+      },
       "url": [
-        "/",
-        "/1.html",
-        "/2.html",
-        "/3.html"
+        "http://localhost:8080/",
+        "http://localhost:8080/1.html",
+        "http://localhost:8080/2.html",
+        "http://localhost:8080/3.html"
       ]
     }
   }

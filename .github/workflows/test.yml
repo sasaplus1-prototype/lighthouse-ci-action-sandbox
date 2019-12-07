@@ -7,14 +7,33 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8080:80
+        env:
+          NGINX_PORT: 80
+        options: -v ${{ github.workspace }}/public:/usr/share/nginx/html --name nginx
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: docker restart nginx
+      - run: docker exec nginx chmod +x -R /usr/share/nginx/html
+      - run: docker exec nginx ls -la /usr/share/nginx/html
+      - run: curl -L http://localhost:8080
+      - run: curl -L http://localhost:8080/1.html
+      - run: npx -p @lhci/cli -c 'lhci autorun'
     # - uses: treosh/lighthouse-ci-action@v2
     #   with:
     #     configPath: .lighthouserc.json
-      - uses: docker://catsoss/node-headless-chrome:latest
-        with:
-          args: 'npx -p @lhci/cli -c "lhci autorun"'
+    #     urls: |
+    #       http://localhost:8080/
+    #       http://localhost:8080/1.html
+    #       http://localhost:8080/2.html
+    #       http://localhost:8080/3.html
       - uses: actions/upload-artifact@v1
         with:
           name: lighthouse-results
