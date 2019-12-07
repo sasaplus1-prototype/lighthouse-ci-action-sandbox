@@ -14,7 +14,7 @@ jobs:
     #     configPath: .lighthouserc.json
       - uses: docker://node:12-alpine
         with:
-          args: npx -p @lhci/cli -c 'lhci autorun'
+          args: 'npx -p @lhci/cli -c "lhci autorun"'
       - uses: actions/upload-artifact@v1
         with:
           name: lighthouse-results
