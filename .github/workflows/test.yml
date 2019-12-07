@@ -12,7 +12,7 @@ jobs:
     # - uses: treosh/lighthouse-ci-action@v2
     #   with:
     #     configPath: .lighthouserc.json
-      - uses: docker://node:12-alpine
+      - uses: docker://catsoss/node-headless-chrome:latest
         with:
           args: 'npx -p @lhci/cli -c "lhci autorun"'
       - uses: actions/upload-artifact@v1
