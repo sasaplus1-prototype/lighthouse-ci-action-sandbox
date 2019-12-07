@@ -1,13 +1,7 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./public",
-      "url": [
-        "http://localhost/",
-        "http://localhost/1.html",
-        "http://localhost/2.html",
-        "http://localhost/3.html"
-      ]
+      "staticDistDir": "./public"
     }
   }
 }
