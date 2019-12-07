@@ -3,10 +3,10 @@
     "collect": {
       "staticDistDir": "./public",
       "url": [
-        "/",
-        "/1.html",
-        "/2.html",
-        "/3.html"
+        "http://localhost/",
+        "http://localhost/1.html",
+        "http://localhost/2.html",
+        "http://localhost/3.html"
       ]
     }
   }
